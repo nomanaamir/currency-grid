@@ -1,7 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-
+import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import io from 'socket.io-client';
+const socket = io('http://localhost:8000/');
 function App() {
+  useEffect(() => {
+    socket.emit('realtime', { name: 'foo bar' })//emit 
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
